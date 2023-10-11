@@ -37,9 +37,31 @@ export default function General() {
 
   const imagesMarkup = (
     <ImageContainer>
-      <NextImage src={TABS[0].imageUrl} alt={TABS[0].title} layout="fixed" height={700} width={300} objectFit="fill" />
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.3 }}
+        variants={{
+          visible: { opacity: 1, scale: 1 },
+          hidden: { opacity: 0, scale: 0 },
+        }}
+      >
+        <NextImage src={TABS[0].imageUrl} alt={TABS[0].title} layout="fixed" height={700} width={300} objectFit="fill" />
+      </motion.div>
       <RightImage>
-        <NextImage src={TABS[1].imageUrl} alt={TABS[1].title} layout="fixed" height={370} width={300} objectFit="fill" />
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.3 }}
+          variants={{
+            visible: { opacity: 1, scale: 1 },
+            hidden: { opacity: 0, scale: 0 },
+          }}
+        >
+          <NextImage src={TABS[1].imageUrl} alt={TABS[1].title} layout="fixed" height={370} width={300} objectFit="fill" />
+        </motion.div>
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -62,19 +84,32 @@ export default function General() {
     const isActive = true;
 
     return (
-      <Tab isActive={isActive} key={idx}>
-        <TabTitleContainer>
-          <CircleContainer>
-            <ThreeLayersCircle baseColor={isActive ? 'transparent' : singleTab.baseColor} secondColor={singleTab.secondColor} />
-          </CircleContainer>
-          <h4>{singleTab.title}</h4>
-        </TabTitleContainer>
-        <Collapse isOpen={isActive} duration={300}>
-          <TabContent>
-            <div dangerouslySetInnerHTML={{ __html: singleTab.description }}></div>
-          </TabContent>
-        </Collapse>
-      </Tab>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.3 }}
+        variants={{
+          visible: { opacity: 1, scale: 1, translateX: 0 },
+          hidden: { opacity: 1, scale: 1, translateX: -100 },
+        }}
+        style={{ marginTop: '10px' }}
+        key={idx}
+      >
+        <Tab isActive={isActive} key={idx}>
+          <TabTitleContainer>
+            <CircleContainer>
+              <ThreeLayersCircle baseColor={isActive ? 'transparent' : singleTab.baseColor} secondColor={singleTab.secondColor} />
+            </CircleContainer>
+            <h4>{singleTab.title}</h4>
+          </TabTitleContainer>
+          <Collapse isOpen={isActive} duration={300}>
+            <TabContent>
+              <div dangerouslySetInnerHTML={{ __html: singleTab.description }}></div>
+            </TabContent>
+          </Collapse>
+        </Tab>
+      </motion.div>
     );
   });
 
