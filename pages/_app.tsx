@@ -20,10 +20,14 @@ import { NewsletterModalContextProvider, useNewsletterModalContext } from 'conte
 import { NavItems } from 'types';
 
 const navItems: NavItems = [
-  { title: 'Awesome SaaS Features', href: '/features' },
-  { title: 'Pricing', href: '/pricing' },
-  { title: 'Contact', href: '/contact' },
-  { title: 'Sign up', href: '/sign-up', outlined: true },
+  { title: 'Trang chủ', href: '/features' },
+  { title: 'Giới thiệu', href: '/pricing' },
+  { title: 'Sản phẩm', href: '/contact' },
+  { title: 'Tin tức', href: '/contact' },
+  { title: 'Tuyển dụng', href: '/contact' },
+  { title: 'Liên hệ', href: '/contact' },
+  { title: 'FAQs', href: '/contact' },
+  // { title: 'Tin tức', href: '/sign-up', outlined: true },
 ];
 
 const TinaCMS = dynamic(() => import('tinacms'), { ssr: false });
@@ -35,6 +39,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link rel="icon" type="image/png" href="/favicon.png" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,800&family=Nunito:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
         {/* <link rel="alternate" type="application/rss+xml" href={EnvVars.URL + 'rss'} title="RSS 2.0" /> */}
         {/* <script
           dangerouslySetInnerHTML={{

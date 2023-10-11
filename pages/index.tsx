@@ -12,6 +12,8 @@ import Hero from 'views/HomePage/Hero';
 import Partners from 'views/HomePage/Partners';
 import ScrollableBlogPosts from 'views/HomePage/ScrollableBlogPosts';
 import Testimonials from 'views/HomePage/Testimonials';
+import { media } from 'utils/media';
+import General from 'views/HomePage/General';
 
 export default function Homepage({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
@@ -23,9 +25,14 @@ export default function Homepage({ posts }: InferGetStaticPropsType<typeof getSt
           content="Tempor nostrud velit fugiat nostrud duis incididunt Lorem deserunt est tempor aute dolor ad elit."
         />
       </Head>
+      <ImageContainer>
+        <img src={'/home/bgrWater.png'} alt={'small-tomei-suiko'} />
+        {/* <HeroIllustration /> */}
+      </ImageContainer>
       <HomepageWrapper>
         <WhiteBackgroundContainer>
           <Hero />
+          <General />
           <Partners />
           <BasicSection imageUrl="/demo-illustration-1.svg" title="Lorem ipsum dolor sit amet consectetur." overTitle="sit amet gogo">
             <p>
@@ -73,7 +80,26 @@ const DarkerBackgroundContainer = styled.div`
     margin-top: 15rem;
   }
 `;
+const ImageContainer = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: flex-start;
+  top: 0;
+  right: 0;
+  position: absolute;
+  img {
+    max-width: 70rem;
+  }
 
+  ${media('<=desktop')} {
+    margin-top: 2rem;
+    justify-content: center;
+    img {
+      max-width: 80%;
+    }
+  }
+`;
 const WhiteBackgroundContainer = styled.div`
   background: rgb(var(--secondBackground));
 

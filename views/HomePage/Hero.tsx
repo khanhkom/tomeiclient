@@ -1,12 +1,9 @@
-import NextLink from 'next/link';
 import styled from 'styled-components';
-import Button from 'components/Button';
-import ButtonGroup from 'components/ButtonGroup';
 import Container from 'components/Container';
 import HeroIllustration from 'components/HeroIllustation';
-import OverTitle from 'components/OverTitle';
 import { useNewsletterModalContext } from 'contexts/newsletter-modal.context';
 import { media } from 'utils/media';
+import NextImage from 'next/image';
 
 export default function Hero() {
   const { setIsModalOpened } = useNewsletterModalContext();
@@ -14,30 +11,32 @@ export default function Hero() {
   return (
     <HeroWrapper>
       <Contents>
-        <CustomOverTitle>the coolest, saas product you have ever seen</CustomOverTitle>
-        <Heading>Make your life easier with our SaaS</Heading>
-        <Description>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, tempora qui. Explicabo voluptate iure ipsum molestias
-          repudiandae perspiciatis nostrum praesentium, unde pariatur tempora magni rem. Necessitatibus facilis obcaecati ratione.
-        </Description>
+        <Heading>Nước</Heading>
+        <Description>HỖ TRỢ MÔI TRƯỜNG TRÁI ĐẤT</Description>
+        <CustomOverTitle>Hãy để chúng tôi mang đến cho bạn tất cả các hệ thống xử lý nước và các ứng dụng EIA tại Việt Nam</CustomOverTitle>
         <CustomButtonGroup>
-          <Button onClick={() => setIsModalOpened(true)}>
-            Subscribe to the newsletter <span>&rarr;</span>
-          </Button>
-          <NextLink href="#whitepaper" passHref>
-            <Button transparent>
-              Features <span>&rarr;</span>
-            </Button>
-          </NextLink>
+          <ImageWrapper>
+            <NextImage src={'/home/smallHero1.png'} width={128} height={128} alt={'small-tomei-suiko'} />
+          </ImageWrapper>
+          <ImageWrapper>
+            <NextImage src={'/home/smallHero1.png'} width={128} height={128} alt={'small-tomei-suiko'} />
+          </ImageWrapper>
+          <NextImage src={'/home/smallHero1.png'} width={128} height={128} alt={'small-tomei-suiko'} />
         </CustomButtonGroup>
       </Contents>
-      <ImageContainer>
-        <HeroIllustration />
-      </ImageContainer>
     </HeroWrapper>
   );
 }
-
+const ImageWrapper = styled.div`
+  position: relative;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  &::before {
+    float: left;
+    padding-top: 5rem;
+    content: '';
+  }
+`;
 const HeroWrapper = styled(Container)`
   display: flex;
   padding-top: 5rem;
@@ -58,50 +57,48 @@ const Contents = styled.div`
   }
 `;
 
-const CustomButtonGroup = styled(ButtonGroup)`
+const CustomButtonGroup = styled.div`
   margin-top: 4rem;
-`;
-
-const ImageContainer = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  align-items: flex-start;
-
-  svg {
-    max-width: 45rem;
-  }
-
-  ${media('<=desktop')} {
-    margin-top: 2rem;
-    justify-content: center;
-    svg {
-      max-width: 80%;
-    }
-  }
+  --autofit-grid-item-size: 10rem;
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(var(--autofit-grid-item-size), 1fr));
 `;
 
 const Description = styled.p`
   font-size: 1.8rem;
   opacity: 0.8;
   line-height: 1.6;
-
+  color: #0f5e9c;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  font-family: 'Nunito', sans-serif;
   ${media('<=desktop')} {
     font-size: 1.5rem;
   }
 `;
 
-const CustomOverTitle = styled(OverTitle)`
-  margin-bottom: 2rem;
+const CustomOverTitle = styled.p`
+  font-size: 1.8rem;
+  opacity: 0.8;
+  line-height: 1.6;
+  color: #0f5e9c;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  ${media('<=desktop')} {
+    font-size: 1.5rem;
+  }
 `;
 
 const Heading = styled.h1`
   font-size: 7.2rem;
-  font-weight: bold;
   line-height: 1.1;
-  margin-bottom: 4rem;
+  margin-bottom: 1.5rem;
   letter-spacing: -0.03em;
-
+  margin-top: 2rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  color: #0f5e9c;
   ${media('<=tablet')} {
     font-size: 4.6rem;
     margin-bottom: 2rem;

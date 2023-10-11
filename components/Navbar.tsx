@@ -69,7 +69,7 @@ export default function Navbar({ items }: NavbarProps) {
       <Content>
         <NextLink href="/" passHref>
           <LogoWrapper>
-            <Logo />
+            <CustomOverTitle>Tomei Suiko</CustomOverTitle>
           </LogoWrapper>
         </NextLink>
         <NavItemList>
@@ -112,11 +112,21 @@ const CustomButton = styled(Button)`
   padding: 0.75rem 1.5rem;
   line-height: 1.8;
 `;
-
+const CustomOverTitle = styled.p`
+  font-size: 1.8rem;
+  line-height: 1.6;
+  color: #0f5e9c;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  ${media('<=desktop')} {
+    font-size: 1.5rem;
+  }
+`;
 const NavItemList = styled.div`
   display: flex;
   list-style: none;
-
+  background-color: #f9f9f9;
+  border-radius: 8rem;
   ${media('<desktop')} {
     display: none;
   }
@@ -155,6 +165,7 @@ const NavItemWrapper = styled.li<Partial<SingleNavItem>>`
     text-decoration: none;
     padding: 0.75rem 1.5rem;
     font-weight: 700;
+    font-family: 'Nunito', sans-serif;
   }
 
   &:not(:last-child) {
